@@ -10,14 +10,18 @@ public class Main {
         return rand;
     }
     public static void main(String[] args) {
+        int WIN_POSITION = 100;
         System.out.println("Welcome to Snake and Ladder game.");
         int position = 0;
-        while(position != 100){
+        while(position < WIN_POSITION){
             int rand = random();
             position += rand;
             int check = random3();
             if(check == 2){
                 position += rand;
+                if(position > WIN_POSITION){
+                    position -= rand;
+                }
             } else if (check == 3) {
                 position -= rand;
                 if(position < 0){
