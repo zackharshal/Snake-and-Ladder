@@ -11,15 +11,23 @@ public class Main {
     }
     public static void main(String[] args) {
         System.out.println("Welcome to Snake and Ladder game.");
-        int rand = random();
-        System.out.println(rand);
-        int check = random3();
-        if(check == 1){
-            System.out.println("No play");
-        } else if (check == 2) {
-            System.out.println("Ladder");
-        }else{
-            System.out.println("Snake");
+        int position = 0;
+        while(position != 100){
+            int rand = random();
+            position += rand;
+            int check = random3();
+            if(check == 2){
+                position += rand;
+            } else if (check == 3) {
+                position -= rand;
+                if(position < 0){
+                    position = 0;
+                }
+            }else{
+                continue;
+            }
         }
+        System.out.println("Player won the game.");
+
     }
 }
