@@ -12,25 +12,32 @@ public class Main {
     public static void main(String[] args) {
         int WIN_POSITION = 100;
         System.out.println("Welcome to Snake and Ladder game.");
-        int position = 0;
+        int position = 0, diceRoll = 0;
         while(position < WIN_POSITION){
             int rand = random();
             position += rand;
-            int check = random3();
-            if(check == 2){
-                position += rand;
-                if(position > WIN_POSITION){
-                    position -= rand;
-                }
-            } else if (check == 3) {
+            if(position > WIN_POSITION){
                 position -= rand;
-                if(position < 0){
-                    position = 0;
-                }
             }else{
-                continue;
+                int check = random3();
+                if(check == 2){
+                    position += rand;
+                    if(position > WIN_POSITION){
+                        position -= rand;
+                    }
+                } else if (check == 3) {
+                    position -= rand;
+                    if(position < 0){
+                        position = 0;
+                    }
+                }else{
+                    continue;
+                }
+                diceRoll++;
+                System.out.println("Position is " + position + " and the number of dice rolls are "+ diceRoll);
             }
         }
+        System.out.println("Position is " + position + " and the number of dice rolls are "+ diceRoll);
         System.out.println("Player won the game.");
 
     }
